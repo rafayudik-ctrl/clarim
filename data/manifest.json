@@ -1,1 +1,1 @@
-{"mv":1,"v":1,"g":"1970-01-01T00:00:00.000Z","mode":"empty","counts":{"videos":0,"authors":0,"comments":0},"files":[],"shards":[]}
+{"mv":1,"v":1,"g":"2026-11-03T20:30:38.428Z","ch":"404913f79a8efe4d91631d5874994d65eeafdeebf0c8d139700c224227e1a26b","mode":"full","counts":{"videos":1,"authors":366,"comments":500},"files":[{"path":"data/datasets/a4491ee839cccd53.json","sha256":"a4491ee839cccd53e1c19b6318d9449a8d6e36bb9733377e7de51913d529a017","bytes":203210,"gzipBytes":84522}],"shards":[]}
