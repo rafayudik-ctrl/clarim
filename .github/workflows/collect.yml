@@ -1,0 +1,61 @@
+name: Collect YouTube data
+
+on:
+  schedule:
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Publicar mesmo sem mudanças no conteúdo"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect-youtube-data
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Test
+        run: npm test
+
+      - name: Collect
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          FORCE_PUBLISH: ${{ inputs.force && '1' || '0' }}
+        run: npm run collect
+
+      - name: Validate artifact
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: npm run validate:artifact
+
+      - name: Commit generated data
+        run: |
+          git add -A data
+
+          if git diff --cached --quiet; then
+            echo "Sem alterações nos dados."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore(data): atualizar dataset do YouTube"
+          git pull --rebase
+          git push
