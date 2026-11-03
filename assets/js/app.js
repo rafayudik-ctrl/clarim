@@ -14,9 +14,11 @@ import {
   setResultsState,
   setState,
   setSummary,
+  setQuota,
   showResultsLoading
 } from "./modules/ui.js";
 import { registerServiceWorker } from "./modules/cache.js";
+import { describeQuota } from "./modules/quota.js";
 import { createQueryClient } from "./modules/worker-client.js";
 
 const RETRY_EVENT = "clarim:retry";
@@ -81,6 +83,7 @@ async function loadData() {
     const info = await client.request("init", { base: document.baseURI });
 
     setSummary(info.counts, info.generatedAt);
+    setQuota(describeQuota(info.quota, info.generatedAt, new Date(), formatNumber));
 
     if (info.mode === "empty") {
       setResultsState({ total: 0, rendered: 0, hasData: false });

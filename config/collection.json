@@ -1,12 +1,10 @@
 {
-  "videos": [
-    "https://www.youtube.com/watch?v=JXm-Z1uP7kc"
-  ],
-  "maxCommentsPerVideo": 500,
-  "maxPagesPerVideo": 50,
+  "videos": [],
+  "maxCommentsPerVideo": 1000,
+  "maxPagesPerVideo": 10,
   "pageSize": 100,
-  "includeReplies": true,
-  "minCommentChars": 50,
+  "includeReplies": false,
+  "minCommentChars": 0,
   "minTotalComments": 1,
   "minVideosWithComments": 1,
   "allowPartial": false,

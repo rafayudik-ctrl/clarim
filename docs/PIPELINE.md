@@ -68,6 +68,11 @@ No GitHub: aba *Actions* → *Collect YouTube data* → *Run workflow* (opção 
 
 Custo aproximado de cota: 1 unidade por chamada. Com 10 páginas por vídeo, são ~11 unidades por vídeo; a cota diária gratuita padrão é de 10.000.
 
+## Cota diária mostrada no site
+
+A API do YouTube **não informa** a cota restante. A coleta conta as chamadas feitas (1 unidade cada, inclusive tentativas com erro) e grava em `q` no manifesto. O site mostra, logo abaixo de "x comentários de y vídeo(s) prontos para filtrar", a cota restante **estimada**: 10.000 menos o uso da última coleta, se ela foi no mesmo dia do fuso do Pacífico (a cota renova à meia-noite de lá); se a coleta foi em dia anterior, mostra a cota cheia.
+Limitações: não enxerga outros usos da mesma chave, nem coletas que terminaram sem publicar (sem mudanças).
+
 ## Sem mudanças = sem commit
 
 O manifesto guarda `ch` (hash do conteúdo sem a data). Se a nova coleta tiver o mesmo `ch`, o script termina sem publicar, e o

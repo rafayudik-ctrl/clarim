@@ -41,6 +41,19 @@ export function decodeManifest(raw) {
   const contentHash =
     raw.ch === undefined ? "" : readSha256(raw.ch, "manifest.ch");
 
+  // `q` (opcional): estimativa de cota da YouTube Data API usada na coleta.
+  let quota = null;
+  if (raw.q !== undefined) {
+    if (
+      !isRecord(raw.q) ||
+      !Number.isInteger(raw.q.used) || raw.q.used < 0 ||
+      !Number.isInteger(raw.q.limit) || raw.q.limit < 1
+    ) {
+      throw new TypeError("manifest.q: { used, limit } inteiros esperados.");
+    }
+    quota = { used: raw.q.used, limit: raw.q.limit };
+  }
+
   if (raw.mode === "empty") {
     if (files.length !== 0 || shards.length !== 0) {
       throw new TypeError("manifest: modo empty não deve ter arquivos.");
@@ -80,6 +93,7 @@ export function decodeManifest(raw) {
     manifestVersion: raw.mv,
     version: raw.v,
     generatedAt: raw.g,
+    quota,
     mode: raw.mode,
     contentHash,
     counts,

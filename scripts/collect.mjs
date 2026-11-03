@@ -8,6 +8,7 @@ import { createOutputBundle } from "./lib/output.mjs";
 import { publishOutputs } from "./lib/publish.mjs";
 import { decodeCompactDataset, decodeManifest } from "../assets/js/modules/data.js";
 
+const DAILY_QUOTA_LIMIT = 10000;
 const root = process.cwd();
 const apiKey = process.env.YOUTUBE_API_KEY;
 const forcePublish = process.env.FORCE_PUBLISH === "1" || process.env.FORCE_PUBLISH === "true";
@@ -67,6 +68,10 @@ try {
   decodeCompactDataset(dataset);
 
   const bundle = createOutputBundle(dataset, config);
+
+  // Estimativa de cota gasta nesta coleta (a API não informa a cota restante).
+  // Fica fora do hash de conteúdo `ch`.
+  bundle.manifest.q = { used: client.getUsage().units, limit: DAILY_QUOTA_LIMIT };
   decodeManifest(bundle.manifest);
 
   for (const warning of warnings) {
@@ -96,6 +101,7 @@ try {
     `Publicado: modo=${bundle.manifest.mode} vídeos=${dataset.videos.length} ` +
     `autores=${dataset.authors.length} comentários=${dataset.comments.length}`
   );
+  console.log(`Cota estimada usada nesta coleta: ${bundle.manifest.q.used} de ${DAILY_QUOTA_LIMIT} unidades.`);
   console.log(
     `Tamanho full: ${bundle.stats.fullBytes}B JSON / ${bundle.stats.fullGzipBytes}B gzip; ` +
     `limite=${config.maxFullCompressedBytes}B.`

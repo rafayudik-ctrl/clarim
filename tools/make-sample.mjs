@@ -94,6 +94,7 @@ const bundle = createOutputBundle(dataset, {
   maxShardCompressedBytes: 204800
 });
 
+bundle.manifest.q = { used: 42, limit: 10000 }; // valor fictício de demonstração
 await publishOutputs({ root: resolve(root), manifest: bundle.manifest, files: bundle.files });
 
 console.log(

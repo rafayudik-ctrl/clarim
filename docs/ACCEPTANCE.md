@@ -41,5 +41,5 @@
 
 ## Verificado nesta entrega
 
-- `npm test`: 53 testes passando.
+- `npm test`: 58 testes passando.
 - Chrome real (Playwright): modos `full` e `sharded`, `dist/` buildado, filtros, nuvem, exportação, persistência e recarga offline, sem erros no console.

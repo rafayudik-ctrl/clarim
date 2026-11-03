@@ -53,6 +53,7 @@ Minimizar bytes e evoluir de forma previsível:
 | `full` | Exatamente um arquivo em `data/datasets/` |
 | `sharded` | Um ou mais arquivos em `data/shards/<videoId>-<parte>-<hash16>.json`, cada um um dataset v1 válido com um vídeo |
 
+- `q` (opcional): `{ "used": 42, "limit": 10000 }`, estimativa das unidades de cota da YouTube Data API gastas na coleta (1 por chamada, inclusive tentativas com erro). Não entra em `ch`. O site usa isso para mostrar a cota diária restante.
 - `ch` (opcional) é o hash do conteúdo ignorando `g`; a coleta o usa para não publicar quando nada mudou.
 - Caminhos são relativos e sempre sob `data/`; `..`, URLs absolutas e barras invertidas são rejeitados.
 - Os arquivos têm o hash no nome, então nunca mudam: podem ter cache imutável.

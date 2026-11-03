@@ -104,6 +104,7 @@ export function createQueryService({
     return {
       mode: manifest.mode,
       generatedAt: manifest.generatedAt,
+      quota: manifest.quota,
       counts: manifest.counts,
       videos: engine.videoList()
     };

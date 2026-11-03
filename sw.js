@@ -24,6 +24,7 @@ const SHELL_PATHS = [
   "./assets/js/modules/cache.js",
   "./assets/js/modules/data.js",
   "./assets/js/modules/export-format.js",
+  "./assets/js/modules/quota.js",
   "./assets/js/modules/query-engine.js",
   "./assets/js/modules/query-service.js",
   "./assets/js/modules/ui.js",

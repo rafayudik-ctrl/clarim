@@ -42,4 +42,5 @@ design da etapa 1 e o cache da etapa 2), então a interface e o Service Worker f
 ## Adição posterior
 
 - `minCommentChars` em `config/collection.json`: coleta apenas comentários com pelo menos N caracteres (0 = desligado). Respostas longas de um comentário curto são mantidas como comentários independentes. Testes em `test/config.test.mjs` e `test/pipeline.test.mjs` (53 no total).
+- Cota diária restante (estimada) exibida abaixo do status "prontos para filtrar": `q` no manifesto, `modules/quota.js`, contagem de unidades no cliente da API.
 - `docs/TUTORIAL-LEIGOS.md`: passo a passo completo para publicar o site.

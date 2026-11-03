@@ -44,6 +44,10 @@ export function createYouTubeClient({
 
   const base = "https://www.googleapis.com/youtube/v3/";
 
+  // Cada chamada list (videos, commentThreads) custa 1 unidade de cota quando
+  // chega ao servidor, inclusive as que retornam erro.
+  let unitsUsed = 0;
+
   async function request(endpoint, params) {
     const url = new URL(endpoint, base);
 
@@ -63,6 +67,8 @@ export function createYouTubeClient({
           headers: { Accept: "application/json" },
           signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS)
         });
+
+        unitsUsed += 1;
 
         if (response.ok) {
           return await response.json();
@@ -94,6 +100,10 @@ export function createYouTubeClient({
   }
 
   return {
+    getUsage() {
+      return { units: unitsUsed };
+    },
+
     async listVideos(ids) {
       const map = new Map();
 

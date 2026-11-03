@@ -18,6 +18,7 @@ export function initUI() {
     summaryVideos: q("[data-summary-videos]"),
     summaryAuthors: q("[data-summary-authors]"),
     summaryDate: q("[data-summary-date]"),
+    quota: q("[data-quota-text]"),
     fieldset: q("[data-filters-fieldset]"),
     chips: q("[data-chips]"),
     hint: q("[data-hint]"),
@@ -63,6 +64,12 @@ export function setSummary(counts, generatedAt) {
     els.summaryDate.textContent =
       time > 0 ? `Dados gerados em ${dateFormatter.format(new Date(time))}.` : "";
   }
+}
+
+export function setQuota(text) {
+  if (!els.quota) return;
+  els.quota.textContent = text || "";
+  els.quota.hidden = !text;
 }
 
 export function setFiltersEnabled(enabled) {

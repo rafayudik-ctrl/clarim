@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.data-build-*
+.data-previous-*
+.DS_Store
+*.log
