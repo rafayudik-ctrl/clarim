@@ -1,0 +1,16 @@
+{
+  "videos": [],
+  "maxCommentsPerVideo": 1000,
+  "maxPagesPerVideo": 10,
+  "pageSize": 100,
+  "includeReplies": false,
+  "minCommentChars": 0,
+  "minTotalComments": 1,
+  "minVideosWithComments": 1,
+  "allowPartial": false,
+  "maxFullCompressedBytes": 307200,
+  "maxShardCompressedBytes": 204800,
+  "forceShards": false,
+  "retries": 3,
+  "retryBaseDelayMs": 500
+}

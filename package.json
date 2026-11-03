@@ -1,0 +1,16 @@
+{
+  "name": "clarim",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "collect": "node scripts/collect.mjs",
+    "validate:artifact": "node scripts/validate-artifact.mjs",
+    "sample": "node tools/make-sample.mjs",
+    "build": "node tools/build-site.mjs"
+  }
+}

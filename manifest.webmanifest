@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "Clarim — Inteligência de comentários",
+  "short_name": "Clarim",
+  "description": "Leitura local e privada de comentários do YouTube, sem backend e sem login.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#050506",
+  "theme_color": "#050506",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

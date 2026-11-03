@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="pt-BR" data-app-state="loading">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clarim — Inteligência de comentários do YouTube</title>
+  <meta name="description" content="Leitura de comentários do YouTube 100% no navegador: filtros por palavra-chave, nuvem de palavras e exportação. Sem login, sem backend.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#050506">
+  <meta name="application-name" content="Clarim">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+  <style>html{background:#050506;color-scheme:dark}body{margin:0}</style>
+  <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="./" aria-label="Clarim, início">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__name">Clarim</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="#controles">Filtros</a>
+        <a href="#comentarios">Comentários</a>
+        <a href="#nuvem">Nuvem</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="page">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__copy">
+        <p class="eyebrow">Leitura de comentários, 100% no navegador</p>
+        <h1 id="hero-title">A conversa inteira. <span>Sem ruído.</span></h1>
+        <p class="hero__lede">
+          Uma base local, rápida e privada para transformar comentários do YouTube em leitura útil.
+          Filtre por palavra-chave, veja os temas em evidência e exporte o resultado.
+        </p>
+
+        <ul class="tag-list" aria-label="Características">
+          <li>Sem login</li>
+          <li>Sem backend</li>
+          <li>Cache local</li>
+          <li>Funciona offline</li>
+        </ul>
+      </div>
+
+      <aside class="hero__card panel" aria-labelledby="hero-card-title">
+        <p class="card-label" id="hero-card-title">Base de dados</p>
+
+        <div class="metric">
+          <span data-summary-comments>—</span>
+          <small>comentários</small>
+        </div>
+
+        <div class="metric-row">
+          <div>
+            <span data-summary-videos>—</span>
+            <small>vídeos</small>
+          </div>
+          <div>
+            <span data-summary-authors>—</span>
+            <small>autores</small>
+          </div>
+        </div>
+
+        <p class="fine-print">
+          Nenhuma imagem remota, fonte externa ou processamento em servidor.
+          A leitura e o filtro acontecem fora da thread principal.
+          <span data-summary-date></span>
+        </p>
+      </aside>
+    </section>
+
+    <div id="app-status" class="status" role="status" aria-live="polite" aria-atomic="true">
+      <span class="status__dot" aria-hidden="true"></span>
+      <span class="status__text" data-app-state-text>Inicializando o shell…</span>
+      <button class="status__retry" type="button" data-retry hidden>Tentar novamente</button>
+    </div>
+
+    <section id="controles" class="section" aria-labelledby="controles-title">
+      <div class="section__heading">
+        <p class="eyebrow">Filtros</p>
+        <h2 id="controles-title">Refine a conversa.</h2>
+        <p>
+          Combine palavras-chave com vídeo, autor e período. A busca ignora maiúsculas e acentos
+          e roda inteiramente no seu navegador.
+        </p>
+      </div>
+
+      <form id="filters" class="filters panel" autocomplete="off" novalidate>
+        <fieldset data-filters-fieldset disabled>
+          <legend class="sr-only">Filtros de comentários</legend>
+
+          <div class="keyword-row">
+            <label class="field field--grow">
+              <span>Palavras-chave</span>
+              <input type="text" data-keyword-input maxlength="40" enterkeyhint="done"
+                     placeholder="Digite uma palavra ou frase e pressione Enter">
+            </label>
+            <button type="submit" class="btn">Adicionar</button>
+          </div>
+
+          <ul class="chip-list" data-chips aria-label="Palavras-chave ativas"></ul>
+
+          <fieldset class="mode">
+            <legend>Correspondência</legend>
+            <label><input type="radio" name="mode" value="any" checked> Qualquer termo</label>
+            <label><input type="radio" name="mode" value="all"> Todos os termos</label>
+          </fieldset>
+
+          <div class="filter-grid">
+            <label class="field">
+              <span>Vídeo</span>
+              <select data-video-select>
+                <option value="">Todos os vídeos</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Autor</span>
+              <input type="search" data-author maxlength="60" placeholder="Nome contém…">
+            </label>
+
+            <label class="field">
+              <span>De</span>
+              <input type="date" data-from>
+            </label>
+
+            <label class="field">
+              <span>Até</span>
+              <input type="date" data-to>
+            </label>
+
+            <label class="field">
+              <span>Ordenar</span>
+              <select data-sort>
+                <option value="recent">Mais recentes</option>
+                <option value="oldest">Mais antigos</option>
+                <option value="likes">Mais curtidos</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="filters__actions">
+            <button type="button" class="btn btn--ghost" data-clear>Limpar filtros</button>
+            <p class="fine-print" data-hint role="status"></p>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+
+    <section id="comentarios" class="section" aria-labelledby="comentarios-title">
+      <div class="section__heading">
+        <p class="eyebrow">Comentários</p>
+        <h2 id="comentarios-title">Comentários em foco.</h2>
+        <p>
+          Os resultados aparecem de 30 em 30 para manter a página leve.
+          A exportação sempre inclui todos os comentários do filtro atual.
+        </p>
+      </div>
+
+      <div class="preview-layout">
+        <div class="panel comments-panel" data-preview-panel aria-busy="true">
+          <div class="comments-panel__bar">
+            <span data-result-count role="status">Aguardando dados…</span>
+          </div>
+
+          <div class="comment-skeletons" data-skeletons aria-hidden="true">
+            <div class="comment-skeleton">
+              <span class="avatar-skeleton"></span>
+              <div class="skeleton-lines">
+                <span class="line line--short"></span>
+                <span class="line"></span>
+                <span class="line line--medium"></span>
+              </div>
+            </div>
+            <div class="comment-skeleton">
+              <span class="avatar-skeleton"></span>
+              <div class="skeleton-lines">
+                <span class="line line--short"></span>
+                <span class="line"></span>
+                <span class="line line--medium"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="comment-list" data-comments></div>
+
+          <p class="empty-note" data-empty hidden>Nenhum comentário corresponde aos filtros atuais.</p>
+
+          <button type="button" class="btn btn--block" data-more hidden>Carregar mais</button>
+        </div>
+
+        <aside class="panel side-panel" aria-labelledby="exportar-title">
+          <h3 id="exportar-title">Exportar</h3>
+          <p class="fine-print side-panel__text">
+            Baixa um arquivo .txt com os comentários do filtro atual, na ordem exibida.
+            Cada comentário é separado por três linhas em branco.
+          </p>
+          <button type="button" class="btn btn--primary btn--block" data-export disabled>Exportar .txt</button>
+        </aside>
+      </div>
+    </section>
+
+    <section id="nuvem" class="section" aria-labelledby="nuvem-title">
+      <div class="section__heading">
+        <p class="eyebrow">Nuvem de palavras</p>
+        <h2 id="nuvem-title">O tema em evidência.</h2>
+        <p>
+          Calculada localmente a partir dos comentários filtrados, sem links, menções e palavras comuns.
+          Selecione uma palavra para adicioná-la ao filtro.
+        </p>
+      </div>
+
+      <div class="panel wordcloud-panel">
+        <div class="wordcloud" data-cloud role="group" aria-label="Palavras mais frequentes"></div>
+        <p class="fine-print" data-cloud-empty>Sem palavras suficientes para exibir.</p>
+      </div>
+    </section>
+
+    <section class="section section--privacy" aria-labelledby="privacidade-title">
+      <div class="panel privacy">
+        <p class="eyebrow">Privacidade</p>
+        <h2 id="privacidade-title">Privacidade por arquitetura.</h2>
+        <p>
+          O produto funciona sem backend, sem login e sem upload de comentários.
+          O navegador baixa os dados públicos já coletados, filtra tudo localmente e mantém cache versionado.
+        </p>
+
+        <ul class="check-list">
+          <li>Sem analytics, trackers ou scripts de terceiros.</li>
+          <li>Sem fontes remotas e sem imagens de miniaturas.</li>
+          <li>Filtros e nuvem calculados em Web Worker, fora da thread principal.</li>
+          <li>Suas palavras-chave ficam apenas neste navegador.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>
+        Clarim é um projeto independente para leitura local de comentários.
+        Nenhum dado seu é enviado a servidores próprios.
+      </p>
+      <p>
+        Não afiliado ao YouTube. “YouTube” é marca do Google LLC.
+        Comentários e demais conteúdos pertencem aos respectivos autores.
+      </p>
+      <p>© <span data-current-year>2026</span> Clarim.</p>
+    </div>
+  </footer>
+
+  <noscript>
+    <div class="noscript panel">
+      O shell visual está disponível sem JavaScript, mas a leitura dos dados,
+      os filtros e o modo offline exigem JavaScript habilitado.
+    </div>
+  </noscript>
+
+  <script type="module" src="./assets/js/app.js"></script>
+</body>
+</html>

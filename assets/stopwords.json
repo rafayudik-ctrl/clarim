@@ -1,0 +1,37 @@
+{
+  "pt": [
+    "a", "à", "ao", "aos", "aquela", "aquelas", "aquele", "aqueles", "aquilo",
+    "as", "até", "com", "como", "da", "das", "de", "dela", "delas", "dele",
+    "deles", "depois", "do", "dos", "e", "é", "ela", "elas", "ele", "eles",
+    "em", "entre", "era", "eram", "essa", "essas", "esse", "esses", "esta",
+    "estamos", "estas", "estava", "estavam", "este", "estes", "eu", "foi",
+    "fomos", "for", "foram", "há", "isso", "isto", "já", "lhe", "mais",
+    "mas", "me", "mesmo", "meu", "meus", "minha", "minhas", "muito", "na",
+    "nas", "não", "no", "nos", "nós", "num", "o", "os", "ou", "para",
+    "pela", "pelas", "pelo", "pelos", "por", "qual", "quando", "que", "quem",
+    "se", "sem", "ser", "seu", "seus", "só", "sua", "suas", "também", "te",
+    "tem", "temos", "tenho", "ter", "teu", "teus", "tu", "tua", "tuas",
+    "um", "uma", "você", "vocês", "vos",
+    "pra", "pro", "pras", "pros", "tá", "né", "vc", "vcs", "aqui", "ali",
+    "aí", "então", "sobre", "ainda", "bem", "sim", "vai", "vou", "tudo",
+    "todo", "toda", "todos", "todas", "cada", "outro", "outra", "são", "foi",
+    "está", "estão", "tinha", "têm", "tão", "nem", "quê", "onde", "porque",
+    "pois", "assim", "então", "agora", "ainda", "sempre", "coisa", "coisas"
+  ],
+  "en": [
+    "a", "about", "above", "after", "again", "against", "all", "am", "an",
+    "and", "any", "are", "as", "at", "be", "because", "been", "before",
+    "being", "below", "between", "both", "but", "by", "can", "could", "did",
+    "do", "does", "doing", "down", "during", "each", "few", "for", "from",
+    "further", "had", "has", "have", "having", "he", "her", "here", "hers",
+    "herself", "him", "himself", "his", "how", "i", "if", "in", "into",
+    "is", "it", "its", "itself", "just", "me", "more", "most", "my",
+    "myself", "no", "nor", "not", "now", "of", "off", "on", "once", "only",
+    "or", "other", "our", "ours", "ourselves", "out", "over", "own", "same",
+    "she", "should", "so", "some", "such", "than", "that", "the", "their",
+    "theirs", "them", "themselves", "then", "there", "these", "they", "this",
+    "those", "through", "to", "too", "under", "until", "up", "very", "was",
+    "we", "were", "what", "when", "where", "which", "while", "who", "whom",
+    "why", "with", "you", "your", "yours", "yourself", "yourselves"
+  ]
+}

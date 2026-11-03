@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Clarim">
+  <title>Clarim</title>
+  <defs>
+    <linearGradient id="g" x1="120" y1="80" x2="392" y2="432" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#64d2ff"/>
+      <stop offset="1" stop-color="#0a84ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="#050506"/>
+  <path
+    d="M120 172c0-26.5 21.5-48 48-48h176c26.5 0 48 21.5 48 48v124c0 26.5-21.5 48-48 48H256l-80 64v-64h-8c-26.5 0-48-21.5-48-48V172Z"
+    fill="url(#g)"
+  />
+  <path
+    d="M190 210h132M190 254h96M190 298h70"
+    stroke="#050506"
+    stroke-width="20"
+    stroke-linecap="round"
+  />
+</svg>
